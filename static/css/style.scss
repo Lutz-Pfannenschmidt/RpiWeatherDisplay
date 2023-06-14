@@ -1,0 +1,159 @@
+body {
+  position: relative;
+  margin: 0;
+  font-family: Ubuntu, serif;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background-color: #3a3a3a;
+  color: white;
+}
+
+div.mainText {
+  width: 40%;
+  background: rgba(33, 33, 33, 0.4);
+
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  translate: -50% -50%;
+
+  text-align: center;
+
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  h1 {
+    margin-bottom: 0;
+    font-size: xxx-large;
+  }
+
+  h2 {
+    margin-top: 0;
+    color: lightblue;
+  }
+}
+
+div.mainContent {
+  width: 40%;
+  aspect-ratio: 2 / 1;
+  background: rgba(33, 33, 33, 0.4);
+
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  translate: -50% -50%;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  .bigIcon {
+    height: 5rem;
+    font-size: 2rem;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+
+    span, i {
+      line-height: 5rem;
+      vertical-align: middle;
+    }
+
+    &:nth-child(n+4) {
+      i, span {
+        float: right;
+      }
+    }
+
+    i::before {
+      font-size: 4rem;
+    }
+
+    &.span2 {
+      grid-row: 4 / 5;
+      grid-column: 1 / 3;
+      position: relative;
+
+      //place-self: center;
+      //width: fit-content;
+      text-align: center;
+
+      progress, span {
+        position: absolute;
+        width: fit-content;
+        top: 0;
+        left: 50%;
+        translate: -50%;
+        height: 100%;
+        z-index: 2;
+        color: #3a3a3a;
+      }
+
+      progress {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        z-index: 1;
+        height: 40%;
+
+        top: 50%;
+        translate: -50% -50%;
+
+        border: 0 solid transparent;
+        border-radius: 5px;
+
+        color: tomato;
+
+        &::-webkit-progress-value {
+          background-color: tomato;
+        }
+
+        &::-moz-progress-bar {
+          background-color: tomato;
+        }
+      }
+    }
+  }
+}
+
+.wi::before {
+  color: tomato;
+}
+
+.wi-fw {
+  width: 2.2em;
+}
+
+.pexelsLink {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+
+a {
+  color: whitesmoke;
+  text-underline: whitesmoke;
+
+  &.rawData {
+    color: transparent;
+    font-size: xxx-large;
+
+    &:hover {
+      color: black;
+      background: white;
+    }
+  }
+}

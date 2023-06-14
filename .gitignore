@@ -1,0 +1,6 @@
+settings.py
+.idea/
+__pycache__/
+.git/
+/static/css/style.css.map
+/static/css/style.css

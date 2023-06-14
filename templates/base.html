@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <title>RpiWeatherDisplay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weather-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weather-icons-wind.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="mainText">
+    <h1>
+        {{ data.location.name }}
+        {{ data.current[symbols.temp_key] }}<i class='wi {{ symbols.temp }}'></i> {# actual temperature #}
+        <!-- {{ data.current[symbols.feelslike] }}<i class='wi {{ symbols.temp }}'></i> {# "feels-like" temperature #} -->
+    </h1>
+
+    <h2>
+        {{ data.current.condition.text }}
+        {{ data.forecast.forecastday[0].day["max" + symbols.temp_key] }}<i class='wi {{ symbols.temp }}'></i>
+        /
+        {{ data.forecast.forecastday[0].day["min" + symbols.temp_key] }}<i class='wi {{ symbols.temp }}'></i>
+    </h2>
+</div>
+
+<div class="mainContent">
+    <h1 class="bigIcon"><i class='wi wi-fw wi-wind from-{{ data.current.wind_degree }}-deg'></i><span> {{ data.current[symbols.wind_key] }} {{ symbols.velocity }}</span></h1>
+    <h1 class="bigIcon"><i class='wi wi-fw wi-cloud '></i><span> {{ data.current["cloud"] }}%</span></h1>
+    <h1 class="bigIcon"><i class='wi wi-fw wi-humidity '></i><span> {{ data.current["humidity"] }}%</span></h1>
+    <h1 class="bigIcon"><i class='wi wi-fw wi-barometer '></i><span> {{ data.current["pressure_" + symbols.pressure] }} {{ symbols.pressure.replace("mb", "hPa") }}</span></h1>
+    <h1 class="bigIcon"><i class='wi wi-fw wi-raindrop '></i><span> {{ data.current["precip_" + symbols.precip] }} {{ symbols.precip }}</span></h1>
+    <h1 class="bigIcon"><i class='wi wi-fw wi-alien '></i><span> {{ data.current["vis_" + symbols.visibility] }} {{ symbols.visibility }}</span></h1>
+    <h1 class="bigIcon span2"><span>UV : {{ data.current.uv | int }}/10</span><progress value="{{ data.current.uv | int }}" max="10"></progress></h1>
+
+
+</div>
+
+<a href="{{ url }}" target="_blank" class="rawData">raw data</a>
+
+<div class="pexelsLink">
+    <a href="https://www.pexels.com" target="_blank">Photos provided by Pexels</a> <br>
+    This
+    <a href="{{ image["photos"][0]["url"] }}" target="_blank">Photo</a>
+    was taken by
+    <a href="{{ image["photos"][0]["photographer_url"] }}" target="_blank">{{ image["photos"][0]["photographer"] }}</a>
+    on Pexels.
+</div>
+
+<script defer>
+    document.body.style.backgroundColor = "{{ image["photos"][0]["avg_color"] }}"
+    document.body.style.backgroundImage = "url('{{ image["photos"][0]["src"]["landscape"] }}')"
+</script>
+
+</body>
+</html>
