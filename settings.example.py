@@ -1,16 +1,16 @@
 settings = {
-    "API_KEY": "GET YOU API KEY AT: https://www.weatherapi.com/",
+    "API_KEY": "<weatherapi_key>",
     # https://www.weatherapi.com/docs/
 
-    "PEXELS_KEY": "GET YOU API KEY AT: https://www.pexels.com/api/",
+    "PEXELS_KEY": "<pexels_key>",
     # https://www.pexels.com/api/documentation/
 
-    "location": "Holtwick",
+    "location": "<your_city>",
     # Valid ways to provide location:
     # https://www.weatherapi.com/docs/
     # Requests > Request Parameters > q
 
-    "language": "de",
+    "language": "<your_language>",
     # Valid ways to provide language:
     # https://www.weatherapi.com/docs/
     # Requests > Request Parameters > lang
